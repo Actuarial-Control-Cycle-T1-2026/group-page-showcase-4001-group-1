@@ -1,7 +1,7 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/FxAEmrI0)
-# Actuarial Theory and Practice A
+# SOA Case Competition: Policy Proposals for Cosmic Quarry Mining Operations
 
-_"Tell me and I forget. Teach me and I remember. Involve me and I learn." – Benjamin Franklin_
+_By Chloe Sue, Joy Zhang, Lachlan Liu, Maria Jang and Min-Suh Park
 
 ---
 
