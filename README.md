@@ -20,15 +20,15 @@ This page is written in Markdown.
 
 ### Methodology of our Model
 
-## Workers Compensation
-# Data Cleaning: 
+#### Workers Compensation
+##### Data Cleaning: 
 - Cleaned corrupted text entries (e.g. Drill Operator_???2905) by removing the sequence after and including  _???
 - Converted variables into appropriate types (numeric vs factor)
 - Filtered observations based on valid ranges for numerical variables (eg. experience years 0.2–40)
 - Restricted categorical variables to allowed levels (eg. safety training index to levels 1-5)
 - Removed missing values
 
-# Frequency modelling:
+##### Frequency modelling:
 - Started with the Poisson GLM with full covariate set and log(exposure) offset — preferred for interpretability compared to accuracy.
 - Overdispersion computed to assess Poisson adequacy; Negative Binomial is not necessary.
 - However, Negative Binomial was also fitted as a robustness check.
@@ -36,13 +36,13 @@ This page is written in Markdown.
 - Each model was checked and adjusted for correlated covariates through VIF measuring the level of multicollinearity among predictors.
 - Final Model: step-wise Poisson Model
 
-# Severity modelling:
+##### Severity modelling:
 - Compared models Gamma, Lognormal and Weibull models considering the positive and heavily right skewed claim amounts.
 - Each model was refined using stepwise selection, evaluated using cross-validation and compared using AIC, RMSE and MAE metrics.
 - Each model was checked and adjusted for correlated covariates through VIF measuring the level of multicollinearity among predictors.
 - Final model: step-wise Lognormal
 
-# Monte-Carlo Simulation
+##### Monte-Carlo Simulation
 - Claim counts are simulated using the Poisson distribution
 - Frequency is adjusted according to employee distribution for occupations using the data from srcsc-2026-cosmic-quarry-personnel
 - Claim severities are simulated using the log-normal distribution
