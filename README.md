@@ -23,6 +23,15 @@ This page is written in Markdown.
 ### Assumptions and Data Limitations
 
 ### Aggregate Loss, Returns and Net Revenue
+Aggregate Loss...
+
+<img width="752" height="258" alt="Screen Shot 2026-04-12 at 9 54 42 pm" src="https://github.com/user-attachments/assets/3ebff707-1bf2-4fcf-81c9-a8a6101035df" />
+
+Returns and Net Revenue...
+
+<img width="758" height="276" alt="Screen Shot 2026-04-12 at 9 55 34 pm" src="https://github.com/user-attachments/assets/c33cddb0-c607-4fa8-9533-00a157923c8c" />
+
+
 
 ### Stress Testing and Scenario Testing
 
