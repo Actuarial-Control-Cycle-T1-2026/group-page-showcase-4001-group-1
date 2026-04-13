@@ -1,7 +1,7 @@
 library(tidyverse)
 library(readxl)
 
-setwd("~/Education/University/ACTL4001/SOA_2026_Case_Study_Materials/SOA_2026_Case_Study_Materials")
+#Set working directory to continue
 
 ## Reading in the data
 bi_freq = read_excel("srcsc-2026-claims-business-interruption.xlsx", sheet = 1)
