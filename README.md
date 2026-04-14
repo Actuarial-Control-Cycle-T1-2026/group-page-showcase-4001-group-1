@@ -13,7 +13,7 @@ By Chloe Seu, Joy Zhang, Lachlan Liu, Maria Jang and Min-Suh Park
 5. [Scenario and Stress Testing](#scenario-and-stress-testing)
 6. [Risk Assessment](#risk-assessment)
 7. [Data Limitations](#data-limitations)
-8. [Final Recommendations](#final-recommendations)
+8. [Final Report](#final-report)
 
 ---
 
@@ -568,6 +568,6 @@ All values are in Đ millions.
 - The lack of clear quantitative distinctions between solar systems in quarry personnel meant an exposure index could not be constructed, so it was proposed that an arbitrary loading factor be applied with Helionis Cluster acting as the benchmark.
 - The historical cargo loss data lacked clear distinctions between solar systems, limiting the model's ability to capture structural differences beyond qualitative adjustments. 
 
-## Final Recommendations
+## Final Report
 The final report can be found [here](https://github.com/Actuarial-Control-Cycle-T1-2026/group-page-showcase-4001-group-1/blob/main/ACTL4001%20Report.pdf).
 
