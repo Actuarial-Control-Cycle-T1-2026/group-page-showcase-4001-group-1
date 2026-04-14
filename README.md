@@ -182,6 +182,7 @@ Returns and Net Revenue...
       <td>Underwriting control for a mandatory cap on hours worked per week to limit exposure accumulation.</td>
     </tr>
   </tbody>
+</table>
 
 ### Oryn Delta
 
@@ -229,6 +230,7 @@ Returns and Net Revenue...
       <td>Underwriting control for mandatory quality safety training and protective gear prior to worker deployment.</td>
     </tr>
   </tbody>
+</table>
 
 
 ## Data Limitations
