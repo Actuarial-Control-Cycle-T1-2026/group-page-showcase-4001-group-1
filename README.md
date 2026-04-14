@@ -10,10 +10,10 @@ By Chloe Seu, Joy Zhang, Lachlan Liu, Maria Jang and Min-Suh Park
 2. [Modelling Methodology](#modelling-methodology)
 3. [Key Assumptions](#key-assumptions)
 4. [Aggregate Loss, Returns and Net Revenue](#aggregate-loss-returns-and-net-revenue)
-5. [Stress Testing and Scenario Testing](#stress-testing-and-scenario-testing)
+5. [Scenario and Stress Testing](#scenario-and-stress-testing)
 6. [Risk Assessment](#risk-assessment)
 7. [Data Limitations](#data-limitations)
-8. [Conclusion](#conclusion)
+8. [Final Recommendations](#final-recommendations)
 
 ---
 
@@ -82,18 +82,346 @@ For the business interruption hazard area, a loss of gross profit benefit struct
 
 ## Aggregate Loss, Returns and Net Revenue
 
-Aggregate Loss...
+### Aggregate Loss
 
-<p align="center">
-<img width="752" height="258" alt="Screen Shot 2026-04-12 at 9 54 42 pm" src="https://github.com/user-attachments/assets/3ebff707-1bf2-4fcf-81c9-a8a6101035df" />
+All values are in Đ millions.
 
-Returns and Net Revenue...
+<table>
+  <thead>
+    <tr>
+      <td>Hazard</td>
+      <td>Term</td>
+      <td>Expected Loss</td>
+      <td>p10</td>
+      <td>p90</td>
+      <td>Variance</td>
+      <td>VaR99</td>
+      <td>TVaR99</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan = "2">Cargo Loss</th>
+      <th>Short</th>
+      <th>10,412.7</th>
+      <th>95.5</th>
+      <th>28,640.1</th>
+      <th>2.48e+14</th>
+      <th>75,022.6</th>
+      <th>96,115.7</th>
+    </tr>
+    <tr>
+      <th>Long</th>
+      <th>101,089.3</th>
+      <th>41,011.7</th>
+      <th>278,045.6</th>
+      <th>2.34e+16</th>
+      <th>728,339.5</th>
+      <th>933,116.7</th>
+    </tr>
+    <tr>
+      <th rowspan = "2">Equipment Failure</th>
+      <th>Short</th>
+      <th>84.8</th>
+      <th>81.0</th>
+      <th>88.6</th>
+      <th>8.84e+6</th>
+      <th>91.8</th>
+      <th>92.9</th>
+    </tr>
+    <tr>
+      <th>Long</th>
+      <th>835.8</th>
+      <th>798.2</th>
+      <th>873.2</th>
+      <th>8.58e+8</th>
+      <th>905.1</th>
+      <th>915.8</th>
+    </tr>
+    <tr>
+      <th rowspan = "2">Worker's Compensation</th>
+      <th>Short</th>
+      <th>4.9</th>
+      <th>2.7</th>
+      <th>9.1</th>
+      <th>5.18e+7</th>
+      <th>37.8</th>
+      <th>55.1</th>
+    </tr>
+    <tr>
+      <th>Long</th>
+      <th>47.4</th>
+      <th>26.3</th>
+      <th>88.5</th>
+      <th>4.88e+9</th>
+      <th>367.4</th>
+      <th>534.6</th>
+    </tr>
+    <tr>
+      <th rowspan = "2">Business Interruption</th>
+      <th>Short</th>
+      <th>34,127.3</th>
+      <th>33,254.6</th>
+      <th>35,007.0</th>
+      <th>4.62e+11</th>
+      <th>35,712.8</th>
+      <th>35,951</th>
+    </tr>
+    <tr>
+      <th>Long</th>
+      <th>361,832.2</th>
+      <th>352579.6</th>
+      <th>371,158.6</th>
+      <th>5.19e+13</th>
+      <th>378,642.8</th>
+      <th>381,167.3</th>
+    </tr>
+  </tbody>
+</table>
 
-<p align="center">
-<img width="758" height="276" alt="Screen Shot 2026-04-12 at 9 55 34 pm" src="https://github.com/user-attachments/assets/c33cddb0-c607-4fa8-9533-00a157923c8c" />
+### Returns and Net Revenue
 
+All values are in Đ millions.
 
-## Stress Testing and Scenario Testing
+<table>
+  <thead>
+    <tr>
+      <td>Hazard</td>
+      <td>Terms</td>
+      <td>Returns</td>
+      <td>Net Revenue</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan = "2">Cargo Loss</th>
+      <th>Short</th>
+      <th>58,217.8</th>
+      <th>36,161.5</th>
+    </tr>
+    <tr>
+      <th>Long</th>
+      <th>565,193.6</th>
+      <th>351,065.6</th>
+    </tr>
+    <tr>
+      <th rowspan = "2">Equipment Failure</th>
+      <th>Short</th>
+      <th>122.9</th>
+      <th>13.6</th>
+    </tr>
+    <tr>
+      <th>Long</th>
+      <th>1,211.7</th>
+      <th>133.6</th>
+    </tr>
+    <tr>
+      <th rowspan = "2">Worker's Compensation</th>
+      <th>Short</th>
+      <th>21.8</th>
+      <th>12.6</th>
+    </tr>
+    <tr>
+      <th>Long</th>
+      <th>211.4</th>
+      <th>121.7</th>
+    </tr>
+    <tr>
+      <th rowspan = "2">Business Interruption</th>
+      <th>Short</th>
+      <th>49,050.4</th>
+      <th>5113</th>
+    </tr>
+    <tr>
+      <th>Long</th>
+      <th>520,053</th>
+      <th>54,210.4</th>
+    </tr>
+    <tr>
+      <th rowspan = "2">Total</th>
+      <th>Short</th>
+      <th>107,412.9</th>
+      <th>41,300.7</th>
+    </tr>
+    <tr>
+      <th>Long</th>
+      <th>521,476.1</th>
+      <th>405,531.3</th>
+    </tr>
+  </tbody>
+</table>
+
+## Scenario and Stress Testing
+
+### Scenario Testing
+
+The scenario testing showed a clear and consistent increase in net revenue as both the expense loading and risk factor k increased. Higher expense loadings directly raised premiums, leading to higher net revenue across all scenarios. Similarly, increasing k scaled the risk margin based on variability, resulting in higher premiums and therefore higher net revenue for all hazard areas.
+
+#### Short Term
+
+<table>
+  <thead>
+    <tr>
+      <th>Short Term</th>
+      <th colspan = "5">Expense Margin as % of Premiums</th>
+    </tr>
+    <tr>
+      <th>Risk Factor</th>
+      <th>0.1</th>
+      <th>0.15</th>
+      <th>0.2</th>
+      <th>0.25</th>
+      <th>0.3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>-0.5</td>
+      <td>775,990.3</td>
+      <td>780,726.9</td>
+      <td>786,121.4</td>
+      <td>792,321.0</td>
+      <td>799,520.6</td>
+    </tr>
+    <tr>
+      <td>-0.25</td>
+      <td>966,738.4</td>
+      <td>972,576.0</td>
+      <td>979,224.4</td>
+      <td>986,865.2</td>
+      <td>995,738.2</td>
+    </tr>
+    <tr>
+      <td>k</td>
+      <td>1,157,486.6</td>
+      <td>1,164,425.2</td>
+      <td>1,172,327.5</td>
+      <td>1,181,409.2</td>
+      <td>1,191,955.9</td>
+    </tr>
+    <tr>
+      <td>0.25</td>
+      <td>1,348,234.7</td>
+      <td>1,356,274.3</td>
+      <td>1,365,430.6</td>
+      <td>1,375,953.4</td>
+      <td>1,388,173.5</td>
+    </tr>
+    <tr>
+      <td>0.5</td>
+      <td>1,538,982.8</td>
+      <td>1,548,123.4</td>
+      <td>1,558,533.6</td>
+      <td>1,570,497.6</td>
+      <td>1,584,391.1</td>
+    </tr>
+  </tbody>
+</table>
+
+#### Long Term
+
+<table>
+  <thead>
+    <tr>
+      <th>Long Term</th>
+      <th colspan = "5">Expense Margin as % of Premiums</th>
+    </tr>
+    <tr>
+      <th>Risk Factor</th>
+      <th>0.1</th>
+      <th>0.15</th>
+      <th>0.2</th>
+      <th>0.25</th>
+      <th>0.3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>-0.5</td>
+      <td>8,203,260.1</td>
+      <td>8,253,286.4</td>
+      <td>8,310,260.9</td>
+      <td>8,375,739.0</td>
+      <td>8,451,778.0</td>
+    </tr>
+    <tr>
+      <td>-0.25</td>
+      <td>10,221,783.7</td>
+      <td>10,283,461.2</td>
+      <td>10,353,704.8</td>
+      <td>10,434,432.3</td>
+      <td>10,528,181.3</td>
+    </tr>
+    <tr>
+      <td>k</td>
+      <td>12,240,308.7</td>
+      <td>12,313,637.0</td>
+      <td>12,397,149.6</td>
+      <td>12,493,126.6</td>
+      <td>12,604,583.6</td>
+    </tr>
+    <tr>
+      <td>0.25</td>
+      <td>14,258,832.7</td>
+      <td>14,343,811.8</td>
+      <td>14,440,593.3</td>
+      <td>14,551,820.8</td>
+      <td>14,680,986.8</td>
+    </tr>
+    <tr>
+      <td>0.5</td>
+      <td>16,277,356.7</td>
+      <td>16,373,986.6</td>
+      <td>16,484,037.1</td>
+      <td>16,610,514.0</td>
+      <td>16,757,390.1</td>
+    </tr>
+  </tbody>
+</table>
+
+### Stress Testing
+
+All values are in Đ millions.
+
+<table>
+  <thead>
+    <tr>
+      <td>Sum across all Hazard Areas</td>
+      <td>Stress Cases</td>
+      <td>Costs</td>
+      <td>Returns (Premiums)</td>
+      <td>Net Revenue</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan = "2">Short Term</td>
+      <td>Basis</td>
+      <td>44,629.7</td>
+      <td>107,412.9</td>
+      <td>41,300.7</td>
+    </tr>
+    <tr>
+      <td>Extreme</td>
+      <td>45,621.6</td>
+      <td>108,850.6</td>
+      <td>41,458.8</td>
+    </tr>
+    <tr>
+      <td rowspan = "2">Long Term</td>
+      <td>Basis</td>
+      <td>463,804.7</td>
+      <td>521,476.1</td>
+      <td>405,631.3</td>
+    </tr>
+    <tr>
+      <td>Extreme</td>
+      <td>483,135.3</td>
+      <td>1,152,589.7</td>
+      <td>438,936.4</td>
+    </tr>
+  </tbody>
+</table>
 
 ## Risk Assessment
 
@@ -240,8 +568,6 @@ Returns and Net Revenue...
 - The lack of clear quantitative distinctions between solar systems in quarry personnel meant an exposure index could not be constructed, so it was proposed that an arbitrary loading factor be applied with Helionis Cluster acting as the benchmark.
 - The historical cargo loss data lacked clear distinctions between solar systems, limiting the model's ability to capture structural differences beyond qualitative adjustments. 
 
-## Conclusion
+## Final Recommendations
 The final report can be found [here](https://github.com/Actuarial-Control-Cycle-T1-2026/group-page-showcase-4001-group-1/blob/main/ACTL4001%20Report.pdf).
 
-
-![](Actuarial.gif)
