@@ -5,17 +5,6 @@ By Chloe Sue, Joy Zhang, Lachlan Liu, Maria Jang and Min-Suh Park
 
 ---
 
-### Our finalised team report can be found here: [Final report](https://www.soa.org/research/opportunities/2026-student-research-case-study-challenge/)!
-### Summary
-
-> Now it's time to build your own website to showcase your work.  
-> Creating a website using GitHub Pages is simple and a great way to present your project.
-
-This page is written in Markdown.
-- Click the [assignment link](https://classroom.github.com/a/FxAEmrI0) to accept your assignment.
-
----
-
 ## Table of Contents
 1. [Product Design](#product-design)
 2. [Modelling Methodology](#modelling-methodology)
@@ -25,6 +14,8 @@ This page is written in Markdown.
 6. [Risk Assessment](#risk-assessment)
 7. [Data Limitations](#data-limitations)
 8. [Conclusion](#conclusion)
+
+---
 
 ## Product Design
 Premiums are paid to Galaxy General Insurance Company annually at the beginning of each year, starting from 2175. Claims are settled annually at the end of each year, with claims arising in 2175 paid in January 2176. The short-term policy has a duration of one year, while the long-term policy spans ten years, with final claims paid in January 2186. 
@@ -90,10 +81,12 @@ For the business interruption hazard area, a loss of gross profit benefit struct
 ## Aggregate Loss, Returns and Net Revenue
 Aggregate Loss...
 
+<p align="center">
 <img width="752" height="258" alt="Screen Shot 2026-04-12 at 9 54 42 pm" src="https://github.com/user-attachments/assets/3ebff707-1bf2-4fcf-81c9-a8a6101035df" />
 
 Returns and Net Revenue...
 
+<p align="center">
 <img width="758" height="276" alt="Screen Shot 2026-04-12 at 9 55 34 pm" src="https://github.com/user-attachments/assets/c33cddb0-c607-4fa8-9533-00a157923c8c" />
 
 
@@ -108,10 +101,7 @@ Returns and Net Revenue...
 - The historical cargo loss data lacked clear distinctions between solar systems, limiting the model's ability to capture structural differences beyond qualitative adjustments. 
 
 ## Conclusion
+The final report can be found [here](https://github.com/Actuarial-Control-Cycle-T1-2026/group-page-showcase-4001-group-1/blob/main/ACTL4001%20Report.pdf).
 
-
-> Be creative! You can embed or link your [data](player_data_salaries_2020.csv), [code](sample-data-clean.ipynb), and [images](ACC.png) here.
-
-More information on GitHub Pages can be found [here](https://pages.github.com/).
 
 ![](Actuarial.gif)
