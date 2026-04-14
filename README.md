@@ -9,7 +9,7 @@ By Chloe Seu, Joy Zhang, Lachlan Liu, Maria Jang and Min-Suh Park
 1. [Product Design](#product-design)
 2. [Modelling Methodology](#modelling-methodology)
 3. [Key Assumptions](#key-assumptions)
-4. [Aggregate Loss, Returns and Net Revenue](#aggregate-loss,-returns-and-net-revenue)
+4. [Aggregate Loss, Returns and Net Revenue](#aggregate-loss-returns-and-net-revenue)
 5. [Stress Testing and Scenario Testing](#stress-testing-and-scenario-testing)
 6. [Risk Assessment](#risk-assessment)
 7. [Data Limitations](#data-limitations)
@@ -18,6 +18,7 @@ By Chloe Seu, Joy Zhang, Lachlan Liu, Maria Jang and Min-Suh Park
 ---
 
 ## Product Design
+
 Premiums are paid to Galaxy General Insurance Company annually at the beginning of each year, starting from 2175. Claims are settled annually at the end of each year, with claims arising in 2175 paid in January 2176. The short-term policy has a duration of one year, while the long-term policy spans ten years, with final claims paid in January 2186. 
 
 ### Cargo Loss   
@@ -72,6 +73,7 @@ For the business interruption hazard area, a loss of gross profit benefit struct
 - 100,000 simulations run to obtain a loss distribution
 
 ## Key Assumptions 
+
 - Claim events are assumed independent, simplifying modelling and simulation processes.
 - Historical claim severity is capped at the 99.5th percentile to reduce impacts of extreme outliers.
 - The relationship between risk factors and claim outcomes is assumed consistent across solar systems.
@@ -79,6 +81,7 @@ For the business interruption hazard area, a loss of gross profit benefit struct
 - The Risk Index derived from quarry inventory data reflects underlying environmental risks in each solar system, independent of productivity risk. 
 
 ## Aggregate Loss, Returns and Net Revenue
+
 Aggregate Loss...
 
 <p align="center">
@@ -94,7 +97,142 @@ Returns and Net Revenue...
 
 ## Risk Assessment
 
+### Helionis Cluster
+
+<table>
+  <thead>
+    <tr>
+      <th>Hazard</th>
+      <th>Risk</th>
+      <th>Definition</th>
+      <th>Mitigation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Cargo Loss</strong></td>
+      <td>Cargo Volume Risk</td>
+      <td>Helionis has the highest concentration of cargo volume, increasing the likelihood of claims due to greater quantity and value of goods in transit.</td>
+      <td>Adjust premiums to reflect the volume of cargo being transported, and set limits on the maximum insured capacity to control potential losses.</td>
+    </tr>
+    <tr>
+      <td><strong>Equipment Failure</strong></td>
+      <td>Irregular gravitational resonances </td>
+      <td>Unstable gravitational interactions within a solar system caused by surrounding celestial bodies, accelerating equipment age and stressful usage intensity.</td>
+      <td>Adjust premiums and underwriting controls based on proactive, rather than reactive, maintenance standards.</td>
+    </tr>
+    <tr>
+      <td rowspan = "2"><strong>Worker’s compensation</strong></td>
+      <td>Claims Risk</td>
+      <td>Increased risk of claims due to injuries caused by erratic drift patterns, micro-collisions, and shifting debris clouds.</td>
+      <td>Mandatory quantum-enhanced prediction models integrated into navigation systems to track shifting debris linked to underwriting eligibility.</td>
+    </tr>
+    <tr>
+      <td>Claims Delay & Escalation Risk</td>
+      <td>Delayed communication may lead to late reporting and escalation of injuries, increasing claim severity due to worsened medical conditions.</td>
+      <td>Expansion of the Interplanetary Claims Grid for real-time claims reporting via orbital AI adjudicators.</td>
+    </tr>
+    <tr>
+      <td><strong>Business Interruption</strong></td>
+      <td>Rapid Spatial Cluttering</td>
+      <td>Communications system is prone to asteroid damage. Loss of communication may halt mining production increasing the change of business interruption.</td>
+      <td>Deploy multiple independent relay satellites in diverse orbits to prevent a single cluster fragmentation from cutting off all communication.</td>
+    </tr>
+    <tr>
+      <td><strong>Cargo Loss, Equipment Failure, Business Interruption</strong></td>
+      <td>Asteroid Collisions</td>
+      <td>Asteroid collisions and debris clouds create navigation challenges, damage equipment quality, and wipe out multiple rigs or satellites.</td>
+      <td>Enforce protocols on low-risk route selection, verified equipment shielding systems and flexible modular operations with relocatable rigs.</td>
+    </tr>
+  </tbody>
+</table>
+
+### Bayesia System
+
+<table>
+  <thead>
+    <tr>
+      <th>Hazard</th>
+      <th>Risk</th>
+      <th>Definition</th>
+      <th>Mitigation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan = "2"><strong>Equipment Failure, Cargo Loss, Business Interruption</strong></td>
+      <td>Radiation damage </td>
+      <td>Binary star system leads to radiation spikes during orbital alignments, increasing claims on electronic damage and incidents during transportation. This may disable entire mining operations simultaneously leading to large losses in business interruption.</td>
+      <td>Sub-limits on radiation losses, with premium incentives for radiation-resistant equipment and low-exposure routing.</td>
+    </tr>
+    <tr>
+      <td>Extreme temperatures</td>
+      <td>Extreme temperatures drive equipment failure, cargo degradation, and production downtime, increasing both claim frequency and severity.</td>
+      <td>Stricter durability and heat-resistant packaging requirements, with premiums adjusted for accelerated wear and temperature-related risks.</td>
+    </tr>
+    <tr>
+      <td rowspan = "2"><strong>Worker’s compensation</strong></td>
+      <td>Catastrophic Claims Risk</td>
+      <td>Exposure to elevated ambient radiation and temperature extremes results in extreme-severity claims, including long-term disability and chronic illness benefits.</td>
+      <td>External risks are hard to predict so it is preferable to cede the catastrophic risk to a reinsurer. These claims can have a severe impact on profitability. </td>
+    </tr>
+    <tr>
+      <td>Claims Accumulation Risk</td>
+      <td>Working extended periods in a high-gravity environment generates more frequent claims, leading to extended wage replacement lengths.</td>
+      <td>Underwriting control for a mandatory cap on hours worked per week to limit exposure accumulation.</td>
+    </tr>
+  </tbody>
+
+### Oryn Delta
+
+<table>
+  <thead>
+    <tr>
+      <th>Hazard</th>
+      <th>Risk</th>
+      <th>Definition</th>
+      <th>Mitigation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan = "2"><strong>Cargo Loss</strong></td>
+      <td>Navigation Instability</td>
+      <td>Weak signals disrupt communication with towers, reducing navigation reliability and increasing delays or cargo loss.</td>
+      <td>Premium incentives for operators using high-reliability routes, with loadings applied to routes with historically weak signal coverage.</td>
+    </tr>
+    <tr>
+      <td>Low Visibility Conditions</td>
+      <td>Environmental factors such as fog and dust reduce visibility, impairing navigation and increasing accident risk.</td>
+      <td>Strict underwriting controls requiring transportation vehicles to be equipped with advanced sensors such as radar.</td>
+    </tr>
+    <tr>
+      <td rowspan = "2"><strong>Equipment Failure, Business Interruption</strong></td>
+      <td>Unpredictable Stellar Flares</td>
+      <td>Sudden and irregular bursts of stellar radiation can damage equipment .</td>
+      <td>Real-time monitoring systems to detect flare events and adjust pricing models early. Coverage limits for extreme flare events.</td>
+    </tr>
+    <tr>
+      <td>Gravitational Shear Zones</td>
+      <td>Regions where uneven gravitational forces lead to structural instability and increased failure risk.</td>
+      <td>Regular reporting requirements on reinforced equipment for shear zones.</td>
+    </tr>
+    <tr>
+      <td rowspan = "2"><strong>Worker’s compensation</strong></td>
+      <td>Future Catastrophic Claims Risk</td>
+      <td>Increased risk of extreme-severity claims, due to future expansions into the asymmetric asteroid ring, where rapid orbital shear and fluctuating gravitational gradients.</td>
+      <td>External risks are hard to predict so it is preferable to cede the catastrophic risk to a reinsurer. These claims can have a severe impact on profitability.</td>
+    </tr>
+    <tr>
+      <td>Rapid Infrastructure Development</td>
+      <td>Higher likelihood of claims due to rapid expansion of infrastructure indicating increases in short-term operational instability.</td>
+      <td>Underwriting control for mandatory quality safety training and protective gear prior to worker deployment.</td>
+    </tr>
+  </tbody>
+
+
 ## Data Limitations
+
 - Data cleaning was not expected to materially bias the results. 
 - Historical datasets were drawn from a different set of solar systems than those being modelled (Helionis Cluster, Bayesia System and Oryn Delta), leading to potentual structural differences, particularly under extreme conditions.
 - The lack of clear quantitative distinctions between solar systems in quarry personnel meant an exposure index could not be constructed, so it was proposed that an arbitrary loading factor be applied with Helionis Cluster acting as the benchmark.
