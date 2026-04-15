@@ -118,7 +118,7 @@ For the business interruption hazard area, a loss of gross profit benefit struct
 
 #### Returns and Net Revenue
 - Returns was defined as the premium calculated by summing the EPV Loss with additional considerations of the following margins; risk, expense and profit margin
-- Based on the industry average, the expense margin set as 20% and profit margin as 8%
+- Based on the industry average, the expense margin was set as 20% and profit margin as 8%
 - The risk margin was calculated by multiplying a risk factor of k to the standard deviation of the loss distribution
   - Hazards with the highest risk were assigned the largest risk factor
   - Risk factor k: Cargo = 2, Business Interruption = 1.75, Workers Compensation = 1.5, Equipment Failure = 1.25
