@@ -108,6 +108,45 @@ For the business interruption hazard area, a loss of gross profit benefit struct
 - 100,000 simulations run to obtain a loss distribution
 
 
+
+### Equipment Failure (Code can be accessed from [Equipment Failure/](Equipment Failure)!)
+#### Data Cleaning: 
+- Cleaned corrupted text entries
+- Converted variables into appropriate types (numeric vs factor)
+- Removed or handled missing values where necessary
+- Capped extreme values in both frequency and severity datasets to reduce the impact of outliers
+- Ensured consistency of categorical levels across datasets (e.g. equipment type, solar system)
+
+#### Frequency modelling:
+- Started with a Poisson GLM with full covariate set and log(exposure) offset — preferred for interpretability
+- Overdispersion was calculated using Pearson residuals to assess Poisson model adequacy
+- A Negative Binomial model was fitted as a comparison to account for potential overdispersion
+- Model performance was compared using AIC, where the Poisson model was preferred
+- Statistical significance of predictors was assessed using model summary outputs
+- Final model coefficients were exponentiated to interpret results as rate ratios
+- Final Model: Poisson GLM
+
+#### Severity modelling:
+- Started with a Gamma GLM with log link, appropriate for positive and right-skewed claim amounts
+- Insignificant variables (e.g. maintenance intensity) were removed to improve model parsimony
+- A refined Gamma model was fitted with the reduced set of predictors
+- A Lognormal model was also fitted by modelling log(claim_amount) using linear regression
+- Models were assessed using statistical significance and diagnostic plots
+- Residual diagnostics were performed to assess model assumptions and fit
+- Final Model: Lognormal model
+
+#### Monte-Carlo Simulation
+- Claim counts are simulated using the Poisson distribution based on the fitted frequency model
+- Expected claim frequencies are adjusted using equipment characteristics (e.g. age, usage intensity, equipment type, solar system) and exposure
+- Claim severities are simulated using the Lognormal distribution based on the fitted severity model
+- Severity is adjusted according to equipment characteristics included in the model
+- Claims are simulated across all equipment units in the portfolio
+- Aggregate losses per simulation are calculated as the sum of simulated claim counts multiplied by simulated claim severities
+- 100,000 simulations  are run to obtain the aggregate loss distribution
+- The resulting distribution is used to estimate key risk measures (e.g. mean loss, variance, percentiles such as VaR)
+
+
+
 ## EPV Loss, Returns and Net Revenue Calculation Method
 #### EPV Loss
 - Expected Present Value of Loss was calculated by the summation of all cashflows projected using inflation rates and discounted back by interest rates
