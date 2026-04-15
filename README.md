@@ -109,7 +109,7 @@ For the business interruption hazard area, a loss of gross profit benefit struct
 
 
 
-### Equipment Failure (Code can be accessed from [Equipment Failure/](Equipment Failure)!)
+### Equipment Failure (Code can be accessed from [EquipmentFailure/](EquipmentFailure)!)
 #### Data Cleaning: 
 - Cleaned corrupted text entries
 - Converted variables into appropriate types (numeric vs factor)
