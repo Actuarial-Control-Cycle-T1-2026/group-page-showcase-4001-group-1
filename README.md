@@ -8,12 +8,13 @@ By Chloe Seu, Joy Zhang, Lachlan Liu, Maria Jang and Min-Suh Park
 ## Table of Contents
 1. [Product Design](#product-design)
 2. [Modelling Methodology](#modelling-methodology)
-3. [Key Assumptions](#key-assumptions)
-4. [Aggregate Loss, Returns and Net Revenue](#aggregate-loss-returns-and-net-revenue)
-5. [Scenario and Stress Testing](#scenario-and-stress-testing)
-6. [Risk Assessment](#risk-assessment)
-7. [Data Limitations](#data-limitations)
-8. [Final Report](#final-report)
+3. [EPV Loss, Returns and Net Revenue Calculation Method](#epv-loss-retuns-and-net-revenue-calculation-method)
+4. [Key Assumptions](#key-assumptions)
+5. [Aggregate Loss, Returns and Net Revenue](#aggregate-loss-returns-and-net-revenue)
+6. [Scenario and Stress Testing](#scenario-and-stress-testing)
+7. [Risk Assessment](#risk-assessment)
+8. [Data Limitations](#data-limitations)
+9. [Final Report](#final-report)
 
 ---
 
@@ -107,7 +108,7 @@ For the business interruption hazard area, a loss of gross profit benefit struct
 - 100,000 simulations run to obtain a loss distribution
 
 
-## EPV Loss, Premium and Net Revenue Calculation Method
+## EPV Loss, Returns and Net Revenue Calculation Method
 #### EPV Loss
 - Expected Present Value of Loss was calculated by the summation of all cashflows projected using inflation rates and discounted back by interest rates
   - The inflation rate was determined by finding the historical average across all years
@@ -115,8 +116,8 @@ For the business interruption hazard area, a loss of gross profit benefit struct
   - The long-term interest rate was determined by finding the historical average of 10 year spot rate
 <img width="629" height="163" alt="Screen Shot 2026-04-15 at 12 38 00 pm" src="https://github.com/user-attachments/assets/35aaa18f-20b3-4db1-8c89-f8c1a20a30bc" />
 
-#### Premium and Net Revenue
-- Premium was calculated by summing the EPV Loss with additional considerations of the following margins; risk, expense and profit margin
+#### Returns and Net Revenue
+- Returns was defined as the premium calculated by summing the EPV Loss with additional considerations of the following margins; risk, expense and profit margin
 - Based on the industry average, the expense margin set as 20% and profit margin as 8%
 - The risk margin was calculated by multiplying a risk factor of k to the standard deviation of the loss distribution
   - Hazards with the highest risk were assigned the largest risk factor
