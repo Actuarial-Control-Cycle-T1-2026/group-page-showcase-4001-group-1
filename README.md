@@ -72,6 +72,41 @@ For the business interruption hazard area, a loss of gross profit benefit struct
 - Aggregated total losses per simulation through claim count * claim severity
 - 100,000 simulations run to obtain a loss distribution
 
+
+
+### Cargo Loss (Code can be accessed from [CargoLoss/](CargoLoss)!)
+#### Data Cleaning: 
+- Cleaned corrupted text entries (e.g. Policy ID_???9113) by removing the sequence after and including  _???
+- Converted variables into appropriate types (numeric vs factor)
+- Filtered observations based on valid ranges for numerical variables (eg. weight 1.5K-250K)
+- About 10% of claim_amount values were outside the range where most were less than the minimum range, so I set the lower bound at the 0.5% quantile
+- Restricted categorical variables to allowed levels (eg. route risk to levels 1-5)
+- Removed missing numerical values and assigned "Unknown" value to missing categorical variables
+
+#### Frequency modelling:
+- Started with the Poisson GLM with full covariate set and log(exposure) offset — preferred for interpretability compared to accuracy.
+- The presence of overdispersion indicated that Negative Binomial was the better model.
+- The Poisson GLM was still used to conduct a robustness check
+- To address multicollinearity, transit_duration was removed and distance was retained based on comparative model performance.
+- Each model was compared using AIC, BIC and RMSE metrics to select the optimal model.
+- Final Model: Negative-Binomial Model
+
+#### Severity modelling:
+- Compared models Gamma and Lognormal models considering the positive and heavily right skewed claim amounts.
+- To address multicollinearity, transit_duration was removed and distance was kept.
+- Each model was compared using AIC, BIC and RMSE metrics.
+- Final model: Lognormal Model
+
+#### Monte-Carlo Simulation
+- Claim counts are simulated using the Negative-Binomial distribution
+- Frequency is adjusted according to total cargo volume and cargo distribution across different solar systems using data from srcsc-2026-cosmic-quarry-inventory
+- Claim severities are simulated using the log-normal distribution
+- Severity is adjusted according to average claim amount from the historical datasheet
+- Claims are simulated across all current cargo types and volume
+- Aggregated total losses per simulation through claim count * claim severity
+- 100,000 simulations run to obtain a loss distribution
+
+
 ## Key Assumptions 
 
 - Claim events are assumed independent, simplifying modelling and simulation processes.
