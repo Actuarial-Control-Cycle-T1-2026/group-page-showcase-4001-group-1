@@ -130,7 +130,8 @@ For the business interruption hazard area, a loss of gross profit benefit struct
 - Historical claim severity is capped at the 99.5th percentile to reduce impacts of extreme outliers.
 - The relationship between risk factors and claim outcomes is assumed consistent across solar systems.
 - Expense, profit and risk margins are applied as a percentage loading to expected losses.
-- The Risk Index derived from quarry inventory data reflects underlying environmental risks in each solar system, independent of productivity risk. 
+- The Risk Index derived from quarry inventory data reflects underlying environmental risks in each solar system, independent of productivity risk.
+- Interest and inflation rates are constant, with historical averages reflecting estimates of future conditions.
 
 ## Aggregate Loss, Returns and Net Revenue
 
