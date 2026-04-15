@@ -107,6 +107,22 @@ For the business interruption hazard area, a loss of gross profit benefit struct
 - 100,000 simulations run to obtain a loss distribution
 
 
+## EPV Loss, Premium and Net Revenue Calculation Method
+#### EPV Loss
+- Expected Present Value of Loss was calculated by the summation of all cashflows projected using inflation rates and discounted back by interest rates
+  - The inflation rate was determined by finding the historical average across all years
+  - The short-term interest rate was determined by finding the historical average of 1 year spot rate
+  - The long-term interest rate was determined by finding the historical average of 10 year spot rate
+<img width="629" height="163" alt="Screen Shot 2026-04-15 at 12 38 00 pm" src="https://github.com/user-attachments/assets/35aaa18f-20b3-4db1-8c89-f8c1a20a30bc" />
+
+#### Premium and Net Revenue
+- Premium was calculated by summing the EPV Loss with additional considerations of the following margins; risk, expense and profit margin
+- Based on the industry average, the expense margin set as 20% and profit margin as 8%
+- The risk margin was calculated by multiplying a risk factor of k to the standard deviation of the loss distribution
+  - Hazards with the highest risk were assigned the largest risk factor
+  - Risk factor k: Cargo = 2, Business Interruption = 1.75, Workers Compensation = 1.5, Equipment Failure = 1.25
+<img width="739" height="212" alt="Screen Shot 2026-04-15 at 12 48 35 pm" src="https://github.com/user-attachments/assets/1f852f1e-cef5-45a1-9362-451a09e81fca" />
+
 ## Key Assumptions 
 
 - Claim events are assumed independent, simplifying modelling and simulation processes.
