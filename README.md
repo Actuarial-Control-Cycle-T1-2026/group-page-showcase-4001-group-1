@@ -145,7 +145,34 @@ For the business interruption hazard area, a loss of gross profit benefit struct
 - 100,000 simulations  are run to obtain the aggregate loss distribution
 - The resulting distribution is used to estimate key risk measures (e.g. mean loss, variance, percentiles such as VaR)
 
+### Business Interruption (Code can be accessed from [Business Interrption/](Business Interruption)!)
+#### Data Cleaning: 
+- Cleaned corrupted text entries (e.g: random suffixes)
+- Converted data into appropriate data types (e.g: factors or numerical)
+- Removed or handled missing values and inconsistent data (some data lay outside the bounds specified in the data dictionary)
+- Capped extreme values in both frequency and severity datasets to reduce the impact of outliers
+- Ensured consistency of categorical levels across datasets (e.g. equipment type, solar system)
 
+#### Frequency modelling:
+- Compared zero-inflated poisson (ZIP) and zero-inflated negative binomial (ZINB)
+- Fit both models with a log(exposure) offset as well as the full covariate set
+- Compared model performance with the AIC metric, the ZIP showed lower AIC
+- Final Model: Zero-Inflated Poisson GLM
+
+#### Severity modelling:
+- Started with a Gamma GLM with log link, appropriate for positive and right-skewed claim amounts
+- A Lognormal model was also fitted by modelling log(claim_amount) using linear regression
+- Models were assessed using statistical significance and diagnostic plots
+- Residual diagnostics were performed to assess model assumptions and fit
+- Attempted to fit a model for the tail (Pareto), however results were unsuitable
+- Final Model: Lognormal model
+
+#### Monte-Carlo Simulation
+- Claim counts are simulated using the Poisson distribution based on the fitted frequency model
+- Claim severities are simulated using the Lognormal distribution based on the fitted severity model
+- Aggregate losses per simulation are calculated as the sum of simulated claim counts multiplied by simulated claim severities
+- 100,000 simulations  are run to obtain the aggregate loss distribution
+- The resulting distribution is used to estimate key risk measures (e.g. mean loss, variance, percentiles such as VaR)
 
 ## EPV Loss, Returns and Net Revenue Calculation Method
 #### EPV Loss
