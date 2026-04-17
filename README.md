@@ -145,7 +145,7 @@ For the business interruption hazard area, a loss of gross profit benefit struct
 - 100,000 simulations  are run to obtain the aggregate loss distribution
 - The resulting distribution is used to estimate key risk measures (e.g. mean loss, variance, percentiles such as VaR)
 
-### Business Interruption (Code can be accessed from [Business Interrption/](Business Interruption)!)
+### Business Interruption (Code can be accessed from [BusinessInterrption/](BusinessInterruption)!)
 #### Data Cleaning: 
 - Cleaned corrupted text entries (e.g: random suffixes)
 - Converted data into appropriate data types (e.g: factors or numerical)
