@@ -1,0 +1,184 @@
+---
+title: "Modelling"
+output: html_document
+date: "2026-03-17"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(readxl)
+library(dplyr)
+library(plotly)
+library(tidyr)
+library(knitr)
+library(writexl)
+library(glmnet)
+library(ismev)
+library(MASS)
+library(pscl)
+```
+
+## Zero-Inflated Negative Binomial (Frequency)
+```{r echo=FALSE}
+pol_data <- read_excel("claim_data_cleaned.xlsx")
+
+# Convert variables to factors
+# pol_data$solar_system <- as.factor(pol_data$solar_system)
+# pol_data$energy_backup_score <- as.factor(pol_data$energy_backup_score)
+# pol_data$safety_compliance <- as.factor(pol_data$safety_compliance)
+
+# Fit negative binomial model to predict claims frequency
+nb_model <- glm.nb(claim_count ~ solar_system + production_load + energy_backup_score + supply_chain_index + avg_crew_exp + maintenance_freq + safety_compliance + offset(log(exposure)), 
+                   data = pol_data)
+
+# Fit logistic model to predict the probabilty of 'zero' claims
+zinb_model <- zeroinfl(claim_count ~ solar_system + production_load + energy_backup_score + supply_chain_index + avg_crew_exp + maintenance_freq + safety_compliance + offset(log(exposure)) | solar_system + production_load + energy_backup_score + supply_chain_index + avg_crew_exp + maintenance_freq + safety_compliance,
+                       dist = "negbin",
+                       data = pol_data)
+```
+
+## Log-Normal Modelling (Severity)
+```{r lognormal_modelling, echo=FALSE}
+# load in data
+sev_data <- read_excel("sev_data_cleaned.xlsx")
+
+# Compute 95th percentile cutoff
+cutoff <- quantile(sev_data$claim_amount, 0.95, na.rm = TRUE)
+
+# Filter out top 5%
+sev_data_filtered <- sev_data %>%
+  filter(claim_amount <= cutoff)
+
+# Fit a log-normal distribution to the severity data
+lognormal_model <- lm(log(claim_amount) ~ solar_system + production_load + exposure + energy_backup_score + safety_compliance,
+                      data = sev_data_filtered)
+
+# Plot the residuals
+par(mfrow=c(2,2))
+plot(lognormal_model)
+
+# Check if the lognormal assumptions hold
+hist(log(sev_data$claim_amount), breaks = 50)
+qqnorm(log(sev_data$claim_amount))
+qqline(log(sev_data$claim_amount))
+```
+
+
+
+## Gamma Modelling (Severity)
+```{r gamma_modelling, echo=FALSE}
+# 
+# # Fit a gamma distribution
+# gamma_model <- glm(claim_amount ~ solar_system + production_load + exposure + energy_backup_score + safety_compliance,
+#                    family = Gamma(link = "log"),
+#                    data = sev_data)
+# 
+# 
+# AIC(lognormal_model, gamma_model)
+```
+
+## Monte-Carlo Simulation
+```{r}
+set.seed(123)
+
+n_sim <- 8000
+n_policies <- nrow(pol_data)
+
+# --- Predict frequency and severity parameters for each policy ---
+p_zero <- predict(zinb_model, newdata = pol_data, type = "zero")
+mu_freq <- predict(zinb_model, newdata = pol_data, type = "count")
+theta <- zinb_model$theta
+
+sev_mu <- predict(lognormal_model, newdata = pol_data)  # log-scale
+sev_sigma <- sigma(lognormal_model)
+
+# --- Initialize storage ---
+agg_losses <- numeric(n_sim)
+total_claims <- numeric(n_sim)  # total number of claims per simulation
+all_claim_sizes <- c()          # optional: store all claim sizes to compute average
+
+
+
+# Inflation Rates
+inflation_avg <- 0.028111845
+short_spot <- 0.047406368
+long_spot <- 0.025598672
+t <- 10
+
+# --- Monte Carlo Simulation ---
+for(sim in 1:n_sim){
+  # Simulate number of claims per policy (vectorized)
+  n_claims <- rnbinom(n_policies, mu = mu_freq, size = theta)  # NB part
+  n_claims[runif(n_policies) < p_zero] <- 0                    # structural zeros
+  
+  # Aggregate number of claims
+  total_claims[sim] <- sum(n_claims)
+  
+  # Simulate claim sizes
+  if(sum(n_claims) > 0){
+    claims <- unlist(lapply(1:n_policies, function(i){
+      if(n_claims[i] > 0){
+        rlnorm(n_claims[i], meanlog = sev_mu[i], sdlog = sev_sigma)
+      } else numeric(0)
+    }))
+    all_claim_sizes <- c(all_claim_sizes, claims)  # accumulate all claims
+    agg_losses[sim] <- sum(claims) * (((1+ inflation_avg)^ t)/ ((1 + long_spot)^t))
+  }
+  print(paste((sim / n_sim) * 100))
+}
+
+# --- Metrics ---
+mean_loss <- mean(agg_losses)
+agg_var <- var(agg_losses)
+agg_sd <- sd(agg_losses)
+VaR_95 <- quantile(agg_losses, 0.95)
+VaR_99 <- quantile(agg_losses, 0.99)
+TVaR_95 <- mean(agg_losses[agg_losses > VaR_95])
+TVaR_99 <- mean(agg_losses[agg_losses > VaR_99])
+
+avg_n_claims <- mean(total_claims) / n_policies  # average per policy
+avg_claim_size <- mean(all_claim_sizes)
+avg_agg_claims <- mean(total_claims)
+
+percentiles <- quantile(agg_losses, c(0.10, 0.50, 0.90))
+
+# --- Output ---
+cat("Expected Loss (mean):", mean_loss, "\n")
+cat("Variance of Aggregate Loss:", agg_var, "\n")
+cat("Standard Deviation:", agg_sd, "\n")
+cat("95% VaR:", VaR_95, "\n")
+cat("99% VaR:", VaR_99, "\n")
+cat("95% TVaR:", TVaR_95, "\n")
+cat("99% TVaR:", TVaR_99, "\n")
+cat("Average number of claims per policy:", avg_n_claims, "\n")
+cat("Average number of aggregate claims:", avg_agg_claims, "\n")
+cat("Average claim size:", avg_claim_size, "\n")
+cat("10th percentile:", percentiles[1], "\n")
+cat("50th percentile (median):", percentiles[2], "\n")
+cat("90th percentile:", percentiles[3], "\n")
+
+
+# Optional: visualize
+hist(agg_losses, breaks = 100, main = "Simulated Aggregate Loss", xlab = "Loss")
+```
+
+
+
+## Tail Modelling
+```{r tail_modelling, echo=FALSE}
+# 
+# # Visual Representation of percentiles
+# plot(sort(sev_data$claim_amount), type = "l", main = "Ordered Claims")
+# abline(h = quantile(sev_data$claim_amount, 0.9), col = "red")
+# abline(h = quantile(sev_data$claim_amount, 0.95), col = "blue")
+# 
+# # 99th percentile
+# u_95 <- quantile(sev_data$claim_amount, 0.99)
+# tail_data <- sev_data$claim_amount[sev_data$claim_amount > u_95]
+# 
+# gpd_95 <- gpd.fit(sev_data$claim_amount, threshold = u_95)
+# print(paste0("95th percentile parameters: ", gpd_95$mle[1], ", ", gpd_95$mle[2]))
+
+```
+
